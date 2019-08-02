@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zatoichi.EventSourcing", "Zatoichi.EventSourcing\Zatoichi.EventSourcing.csproj", "{656FBAC7-11C6-4451-AE34-3BF7638206CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zatoichi.EventSourcing.Tests", "Zatoichi.EventSourcing.Tests\Zatoichi.EventSourcing.Tests.csproj", "{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{656FBAC7-11C6-4451-AE34-3BF7638206CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{656FBAC7-11C6-4451-AE34-3BF7638206CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{656FBAC7-11C6-4451-AE34-3BF7638206CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{656FBAC7-11C6-4451-AE34-3BF7638206CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC564B32-C081-4B7D-AF47-E61F0B91DBF7}
+	EndGlobalSection
+EndGlobal
