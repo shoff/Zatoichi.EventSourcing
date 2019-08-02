@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zatoichi.EventSourcing", "Zatoichi.EventSourcing\Zatoichi.EventSourcing.csproj", "{656FBAC7-11C6-4451-AE34-3BF7638206CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zatoichi.EventSourcing", "Zatoichi.EventSourcing\Zatoichi.EventSourcing.csproj", "{656FBAC7-11C6-4451-AE34-3BF7638206CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zatoichi.EventSourcing.Tests", "Zatoichi.EventSourcing.Tests\Zatoichi.EventSourcing.Tests.csproj", "{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zatoichi.EventSourcing.Tests", "Zatoichi.EventSourcing.Tests\Zatoichi.EventSourcing.Tests.csproj", "{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zatoichi.EventSourcing.MongoDb", "Zatoichi.EventSourcing.MongoDb\Zatoichi.EventSourcing.MongoDb.csproj", "{59073FE3-29F7-4017-A6F7-F683FBD408F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEF96878-9EBB-4907-B7D7-9A27B84B4D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59073FE3-29F7-4017-A6F7-F683FBD408F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59073FE3-29F7-4017-A6F7-F683FBD408F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59073FE3-29F7-4017-A6F7-F683FBD408F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59073FE3-29F7-4017-A6F7-F683FBD408F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
