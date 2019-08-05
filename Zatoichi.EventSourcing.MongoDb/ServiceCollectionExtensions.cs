@@ -4,7 +4,7 @@
 
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddMongoEventStore(IServiceCollection services)
+        public static IServiceCollection AddMongoEventStore(this IServiceCollection services)
         {
             services.AddTransient<IEventStore, MongoEventStore>();
             return services;
