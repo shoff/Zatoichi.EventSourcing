@@ -26,7 +26,7 @@
         public virtual async Task Send<TCommand>(TCommand command) where TCommand : ICommand
         {
             Guard.IsNotNull(command, nameof(command));
-            var result = await this.executionPolicies.ApiExecutionPolicy.ExecuteAndCaptureAsync(()=>this.mediator.Send(command)).ConfigureAwait(false);
+            var result = await this.executionPolicies.ApiExecutionPolicy.ExecuteAndCaptureAsync(()=>this.mediator.Publish(command)).ConfigureAwait(false);
             if (result.Outcome != Polly.OutcomeType.Successful)
             {
                 if (result.FinalException != null)

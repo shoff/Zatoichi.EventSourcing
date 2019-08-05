@@ -36,7 +36,7 @@
         {
             while (this.pendingEvents.TryDequeue(out var @event))
             {
-                @event.Apply();
+                @event.Apply(this);
             }
         }
         /// <summary>

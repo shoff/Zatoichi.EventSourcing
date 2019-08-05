@@ -4,9 +4,8 @@
     {
         public static TestEvent Instance => new TestEvent();
 
-        public override void Apply()
+        public override void Apply(IEventEntity eventEntity)
         {
-            
         }
     }
 }
