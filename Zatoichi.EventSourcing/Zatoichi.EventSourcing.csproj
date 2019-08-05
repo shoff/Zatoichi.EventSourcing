@@ -2,8 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Version>0.0.1.6</Version>
+    <Version>0.0.1.9</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A simple library for the purposes of learning the concepts behind event sorucing architecture.</Description>
+    <Copyright>2019 MonkeyButt software</Copyright>
+    <PackageProjectUrl>https://github.com/shoff/Zatoichi.EventSourcing</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/shoff/Zatoichi.EventSourcing</RepositoryUrl>
+    <PackageTags>learning</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

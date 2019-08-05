@@ -4,9 +4,9 @@
     {
         public static TestEvent Instance => new TestEvent();
 
-        public override T Apply<T>(T t)
+        public override void Apply()
         {
-            return t;
+            
         }
     }
 }

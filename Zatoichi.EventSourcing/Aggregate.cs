@@ -31,11 +31,12 @@
         {
             this.pendingEvents.Clear();
         }
+
         public virtual void ApplyEvents()
         {
             while (this.pendingEvents.TryDequeue(out var @event))
             {
-                @event.Apply(this);
+                @event.Apply();
             }
         }
         /// <summary>
