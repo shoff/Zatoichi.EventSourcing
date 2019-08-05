@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Version>0.0.1.2</Version>
+    <Version>0.0.1.4</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -10,6 +10,7 @@
     <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
+    <PackageReference Include="Polly" Version="7.1.0" />
     <PackageReference Include="Zatoichi.Common.Infrastructure" Version="2.0.7" />
     <PackageReference Include="Zatoichi.ExpressionSerializer" Version="1.0.0" />
   </ItemGroup>

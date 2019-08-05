@@ -20,4 +20,8 @@
     <PackageReference Include="Zatoichi.ExpressionSerializer" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Zatoichi.EventSourcing\Zatoichi.EventSourcing.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -2,9 +2,10 @@
 {
     using System;
 
-    public abstract class Event<T>
+    public abstract class Event : IEvent
     {
-        public int Revision { get; set; } // TODO this should be generated somehow
+        public abstract T Apply<T>(T t);
+        public int Revision { get; set; } 
         public string Expression { get; set; }
         public DateTime CommitDate { get; set; }
     }

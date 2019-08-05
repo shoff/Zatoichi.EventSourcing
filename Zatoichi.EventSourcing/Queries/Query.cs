@@ -1,4 +1,4 @@
-﻿namespace Zatoichi.EventSourcing
+﻿namespace Zatoichi.EventSourcing.Queries
 {
     using System;
     using System.Linq.Expressions;

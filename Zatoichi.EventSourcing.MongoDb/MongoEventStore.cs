@@ -14,7 +14,7 @@
     public class MongoEventStore : IEventStore
     {
         private readonly ILogger<MongoEventStore> logger;
-        private IMongoDatabase database;
+        private readonly IMongoDatabase database;
         private const string ADMIN = "admin";
 
         public MongoEventStore(
@@ -36,27 +36,36 @@
             this.database = client.GetDatabase(options.Value.DefaultDb);
         }
         
-        public T GetLatestSnapShot<T>()
+        public virtual T GetLatestSnapShot<T>()
         {
             var collection = this.database.GetCollection<T>(typeof(T).Name);
             return collection.AsQueryable().Last();
         }
 
-        public void StoreEvent<T>(Event<T> @event)
+        public virtual void StoreEvent<T>(Event @event)
         {
             this.logger.LogDebug($"Add:{typeof(T).Name} {@event.ToJson()}");
-            this.database.GetCollection<Event<T>>(typeof(Event<T>).Name).InsertOne(@event);
+            this.database.GetCollection<Event>(typeof(Event).Name).InsertOne(@event);
         }
 
-        public Task StoreEventAsync<T>(Event<T> @event)
+        public virtual Task StoreEventAsync<T>(Event @event)
         {
             this.logger.LogDebug($"Add:{typeof(T).Name} {@event.ToJson()}");
-            return this.database.GetCollection<Event<T>>(typeof(Event<T>).Name).InsertOneAsync(@event);
+            return this.database.GetCollection<Event>(typeof(Event).Name).InsertOneAsync(@event);
         }
 
-        public ICollection<Event<T>> Where<T>(Expression<Predicate<T>> predicate)
+        public virtual ICollection<Event> Where<T>(Expression<Func<Event, bool>> predicate)
         {
-            throw new NotImplementedException();
+            var collection = this.database.GetCollection<Event>(typeof(T).Name);
+            var events = collection.AsQueryable().Where(predicate.Compile()).ToList();
+            return events;
+        }
+
+        public virtual Task<ICollection<Event>> GetEventStream<TAggregate>(Guid id) where TAggregate : IAggregate, new()
+        {
+            var collection = this.database.GetCollection<Event>(typeof(TAggregate).Name);
+            var events = collection.AsQueryable().ToList();
+            return Task.FromResult((ICollection<Event>)events);
         }
     }
 }
