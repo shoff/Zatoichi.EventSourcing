@@ -3,7 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.1.6</Version>
+    <Version>0.0.1.7</Version>
+    <Copyright>2019 MonkeyButt Software</Copyright>
+    <Description>Simplistic implementation of IEventStore using MongoDb</Description>
   </PropertyGroup>
 
   <ItemGroup>

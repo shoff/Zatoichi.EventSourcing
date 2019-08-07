@@ -18,7 +18,7 @@
     /// </remarks>
     public abstract class Aggregate : IAggregate
     {
-        private List<INotification> domainEvents;
+        protected List<INotification> domainEvents;
 
         protected readonly Queue<Event> pendingEvents = new Queue<Event>();
         protected int version = -1; // TODO if this were a real library, I'd write a version service for aggregates.
@@ -57,7 +57,7 @@
             events.Each(this.pendingEvents.Enqueue);
         }
 
-        public virtual void AddDomainEvent(INotification eventItem)
+        protected virtual void AddDomainEvent(INotification eventItem)
         {
             // lazy load
             this.domainEvents = this.domainEvents ?? new List<INotification>();
