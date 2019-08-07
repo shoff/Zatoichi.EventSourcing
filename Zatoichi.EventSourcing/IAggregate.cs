@@ -1,6 +1,6 @@
 ﻿namespace Zatoichi.EventSourcing
 {
-    public interface IAggregate : IEventEntity
+    public interface IAggregate : IEntity
     {
         IAggregateId RootId { get; }
         int Version { get; }
