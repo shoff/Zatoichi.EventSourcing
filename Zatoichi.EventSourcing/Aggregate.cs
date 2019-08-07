@@ -1,7 +1,7 @@
 ﻿namespace Zatoichi.EventSourcing
 {
     using System.Collections.Generic;
-    using System.Threading;
+    using System.Linq;
     using ChaosMonkey.Guards;
     using Common.Infrastructure.Extensions;
     using MediatR;
@@ -18,60 +18,42 @@
     /// </remarks>
     public abstract class Aggregate : IAggregate
     {
-        protected List<INotification> domainEvents;
-
-        protected readonly Queue<Event> pendingEvents = new Queue<Event>();
+        protected Queue<INotification> domainEvents;
         protected int version = -1; // TODO if this were a real library, I'd write a version service for aggregates.
 
         protected Aggregate() { }
 
-        protected Aggregate(
-            IAggregateId rootId)
+        protected Aggregate(IAggregateId rootId)
         {
             this.RootId = rootId;
         }
 
         public virtual void ClearPendingEvents()
         {
-            this.pendingEvents.Clear();
+            this.domainEvents.Clear();
         }
 
-        public virtual void ApplyEvents()
-        {
-            while (this.pendingEvents.TryDequeue(out var @event))
-            {
-                @event.Apply(this);
-            }
-        }
- 
-        public virtual void RaiseEvent(Event @event)
-        {
-            Guard.IsNotNull(@event, nameof(@event));
-            Interlocked.Increment(ref this.version);
-            @event.Revision = this.version;
-        }
+        public virtual void ApplyEvents() {}
 
-        public virtual void AddEvents(ICollection<Event> events)
+        public virtual void AddEvents(ICollection<INotification> events)
         {
             Guard.IsNotNull(events, nameof(events));
-            events.Each(this.pendingEvents.Enqueue);
+            events.Each(this.domainEvents.Enqueue);
         }
 
         protected virtual void AddDomainEvent(INotification eventItem)
         {
             // lazy load
-            this.domainEvents = this.domainEvents ?? new List<INotification>();
-            this.domainEvents.Add(eventItem);
+            this.domainEvents = this.domainEvents ?? new Queue<INotification>();
+            this.domainEvents.Enqueue(eventItem);
         }
 
         [JsonProperty]
         public IAggregateId RootId { get; protected set; }
 
-        public IReadOnlyCollection<INotification> DomainEvents => this.domainEvents?.AsReadOnly();
+        public IReadOnlyCollection<INotification> DomainEvents => this.domainEvents?.ToList().AsReadOnly();
 
         [JsonProperty]
         public virtual int Version => this.version;
-
-        public int PendingEventCount => this.pendingEvents.Count;
     }
 }
