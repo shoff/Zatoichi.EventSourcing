@@ -56,7 +56,7 @@ class NugetUpdate:
         zatoichi_eventsourcing_nuget = self.domain_lib_path + 'Zatoichi.EventSourcing.' + self.domain_lib_last_version + '.nupkg'
         zatoichi_eventsourcing_mongodb_nuget = self.mongodb_lib_path + 'Zatoichi.EventSourcing.MongoDb.' + self.mongodb_lib_last_version + '.nupkg'
         
-        push = ['dotnet', 'nuget', 'push', '-s', 'http://zatoichi.ddns.net:8080/v3/index.json', '-k', 'K0te_12345', zatoichi_eventsourcing_nuget]
+        push = ['dotnet', 'nuget', 'push', '-s', 'http://zatoichi:8080/v3/index.json', '-k', 'K0te_12345', zatoichi_eventsourcing_nuget]
         print(push)
         subprocess.run(push)
         push = push[:-1]

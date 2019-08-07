@@ -4,6 +4,8 @@
     using System.Threading;
     using ChaosMonkey.Guards;
     using Common.Infrastructure.Extensions;
+    using MediatR;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// </summary>
@@ -16,6 +18,8 @@
     /// </remarks>
     public abstract class Aggregate : IAggregate
     {
+        private List<INotification> domainEvents;
+
         protected readonly Queue<Event> pendingEvents = new Queue<Event>();
         protected int version = -1; // TODO if this were a real library, I'd write a version service for aggregates.
 
@@ -39,25 +43,35 @@
                 @event.Apply(this);
             }
         }
-        /// <summary>
-        /// Adds the event to the aggregate and increments the version.
-        /// The version incrementation is thread-safe
-        /// </summary>
-        /// <param name="event"></param>
+ 
         public virtual void RaiseEvent(Event @event)
         {
             Guard.IsNotNull(@event, nameof(@event));
-            // TODO hmm not too sure how I want to do this
             Interlocked.Increment(ref this.version);
             @event.Revision = this.version;
         }
+
         public virtual void AddEvents(ICollection<Event> events)
         {
             Guard.IsNotNull(events, nameof(events));
             events.Each(this.pendingEvents.Enqueue);
         }
+
+        public virtual void AddDomainEvent(INotification eventItem)
+        {
+            // lazy load
+            this.domainEvents = this.domainEvents ?? new List<INotification>();
+            this.domainEvents.Add(eventItem);
+        }
+
+        [JsonProperty]
         public IAggregateId RootId { get; protected set; }
+
+        public IReadOnlyCollection<INotification> DomainEvents => this.domainEvents?.AsReadOnly();
+
+        [JsonProperty]
         public virtual int Version => this.version;
+
         public int PendingEventCount => this.pendingEvents.Count;
     }
 }
