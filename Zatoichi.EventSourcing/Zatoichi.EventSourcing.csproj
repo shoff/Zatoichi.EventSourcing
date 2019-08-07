@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <Version>0.0.5.0</Version>
+    <Version>0.0.5.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>A simple library for the purposes of learning the concepts behind event sorucing architecture.</Description>
     <Copyright>2019 MonkeyButt software</Copyright>

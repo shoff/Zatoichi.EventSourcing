@@ -12,6 +12,9 @@
         }
 
         [JsonProperty]
+        public string Body { get; protected set; }
+
+        [JsonProperty]
         public string EventType { get; protected set; }
 
         [JsonProperty]
