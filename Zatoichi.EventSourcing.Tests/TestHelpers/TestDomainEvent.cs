@@ -8,5 +8,8 @@
             : base(version)
         {
         }
+
+        public override string Body { get; protected set; }
+        public override string EventType { get; protected set; }
     }
 }

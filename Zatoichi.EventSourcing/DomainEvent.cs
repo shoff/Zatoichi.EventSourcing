@@ -12,13 +12,13 @@
         }
 
         [JsonProperty]
-        public string Body { get; protected set; }
+        public abstract string Body { get; protected set; }
 
         [JsonProperty]
-        public string EventType { get; protected set; }
+        public abstract string EventType { get; protected set; }
 
         [JsonProperty]
-        public EventVersion Version { get; private set; }
+        public virtual EventVersion Version { get; private set; }
 
         [JsonProperty]
         public virtual DateTime CommitDate { get; private set; }
