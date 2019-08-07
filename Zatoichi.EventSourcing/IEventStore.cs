@@ -9,9 +9,9 @@
     {
         // For now "snapshot" will also hold a collection events that have not been applied
         T GetLatestSnapShot<T>();
-        void StoreEvent<T>(Event @event);
-        Task StoreEventAsync<T>(Event @event);
-        ICollection<Event> Where<T>(Expression<Func<Event, bool>> predicate);
-        Task<ICollection<Event>> GetEventStream<TAggregate>(Guid id) where TAggregate : IAggregate, new();
+        void StoreEvent<T>(DomainEvent domainEvent);
+        Task StoreEventAsync<T>(DomainEvent domainEvent);
+        ICollection<DomainEvent> Where<T>(Expression<Func<DomainEvent, bool>> predicate);
+        Task<ICollection<DomainEvent>> GetEventStream<TAggregate>(Guid id) where TAggregate : IAggregate, new();
     }
 }

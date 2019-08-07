@@ -6,6 +6,6 @@
     public abstract class Query<T> : IQuery<T>
     {
         public virtual Expression<Func<bool, T>> Where { get; set; }
-        public string Description { get; set; }
+        public virtual string Description { get; set; }
     }
 }

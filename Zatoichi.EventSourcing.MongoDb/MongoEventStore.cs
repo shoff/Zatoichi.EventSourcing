@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    using Config;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using MongoDB.Bson;
@@ -42,30 +41,30 @@
             return collection.AsQueryable().Last();
         }
 
-        public virtual void StoreEvent<T>(Event @event)
+        public virtual void StoreEvent<T>(DomainEvent domainEvent)
         {
-            this.logger.LogDebug($"Add:{typeof(T).Name} {@event.ToJson()}");
-            this.database.GetCollection<Event>(typeof(Event).Name).InsertOne(@event);
+            this.logger.LogDebug($"Add:{typeof(T).Name} {domainEvent.ToJson()}");
+            this.database.GetCollection<DomainEvent>(typeof(DomainEvent).Name).InsertOne(domainEvent);
         }
 
-        public virtual Task StoreEventAsync<T>(Event @event)
+        public virtual Task StoreEventAsync<T>(DomainEvent domainEvent)
         {
-            this.logger.LogDebug($"Add:{typeof(T).Name} {@event.ToJson()}");
-            return this.database.GetCollection<Event>(typeof(Event).Name).InsertOneAsync(@event);
+            this.logger.LogDebug($"Add:{typeof(T).Name} {domainEvent.ToJson()}");
+            return this.database.GetCollection<DomainEvent>(typeof(DomainEvent).Name).InsertOneAsync(domainEvent);
         }
 
-        public virtual ICollection<Event> Where<T>(Expression<Func<Event, bool>> predicate)
+        public virtual ICollection<DomainEvent> Where<T>(Expression<Func<DomainEvent, bool>> predicate)
         {
-            var collection = this.database.GetCollection<Event>(typeof(T).Name);
+            var collection = this.database.GetCollection<DomainEvent>(typeof(T).Name);
             var events = collection.AsQueryable().Where(predicate.Compile()).ToList();
             return events;
         }
 
-        public virtual Task<ICollection<Event>> GetEventStream<TAggregate>(Guid id) where TAggregate : IAggregate, new()
+        public virtual Task<ICollection<DomainEvent>> GetEventStream<TAggregate>(Guid id) where TAggregate : IAggregate, new()
         {
-            var collection = this.database.GetCollection<Event>(typeof(TAggregate).Name);
+            var collection = this.database.GetCollection<DomainEvent>(typeof(TAggregate).Name);
             var events = collection.AsQueryable().ToList();
-            return Task.FromResult((ICollection<Event>)events);
+            return Task.FromResult((ICollection<DomainEvent>)events);
         }
     }
 }
