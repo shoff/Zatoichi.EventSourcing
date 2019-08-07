@@ -12,7 +12,7 @@
         }
 
         [JsonProperty]
-        public abstract string Body { get; protected set; }
+        public abstract string Body { get; set; }
 
         [JsonProperty]
         public abstract string EventType { get; protected set; }

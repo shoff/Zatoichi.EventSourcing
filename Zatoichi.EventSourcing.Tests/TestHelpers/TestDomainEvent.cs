@@ -9,7 +9,7 @@
         {
         }
 
-        public override string Body { get; protected set; }
+        public override string Body { get; set; }
         public override string EventType { get; protected set; }
     }
 }
